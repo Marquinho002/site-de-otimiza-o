@@ -1,0 +1,505 @@
+<html><head><base href="/" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HyTeck</title>
+<style>
+:root {
+  --primary: #000000; /* Piano Black */
+  --secondary: #FFD700; /* Camaro Yellow */
+  --accent: #FFB700; /* Darker Camaro Yellow */
+  --light: #FFF8E7;
+  --gradient: linear-gradient(135deg, #FFD700, #FFB700);
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light);
+  color: var(--primary);
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(45deg, #000000, #1a1a1a);
+  color: var(--secondary);
+  padding: 6rem 2rem;
+  text-align: center;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.7);
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(255,215,0,0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255,191,0,0.2) 0%, transparent 50%);
+  animation: shimmer 8s infinite;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+header h1 {
+  font-size: 4.5rem;
+  margin: 0;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+  animation: slideIn 1s ease-out, rgbText 8s linear infinite;
+}
+
+@keyframes rgbText {
+  0% { color: #ff0000; }
+  20% { color: #ffd700; }
+  40% { color: #00ff00; }
+  60% { color: #0000ff; }
+  80% { color: #ff00ff; }
+  100% { color: #ff0000; }
+}
+
+header p {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  opacity: 0.9;
+  animation: fadeIn 1.5s ease-out;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  position: relative;
+  display: inline-block;
+}
+
+header p::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--gradient);
+  border-radius: 3px;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 2rem;
+  background: linear-gradient(45deg, #fff8e7 0%, #fff2cc 100%);
+}
+
+.optimization-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-left: 5px solid var(--secondary);
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(135deg, rgba(255,215,0,0.1) 0%, rgba(255,215,0,0.05) 100%);
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  border-left: 5px solid var(--accent);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 15px;
+  margin: 2rem 0;
+  padding: 4px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+  width: 0%;
+  height: 25px;
+  background: linear-gradient(90deg, #ffd700, #ffbf00);
+  border-radius: 12px;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.progress-bar::after {
+  content: attr(data-progress) '%';
+  position: absolute;
+  right: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+}
+
+.floating-element {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.button {
+  background: #000000;
+  color: var(--secondary);
+  padding: 1.2rem 2.5rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: bold;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255,215,0,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.button:hover {
+  background: #1a1a1a;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.4);
+}
+
+.button:hover::before {
+  transform: translateX(100%);
+}
+
+.tips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+h1, h2, h3 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.card h3 {
+  color: #000000;
+  font-size: 1.4rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.card h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--gradient);
+  border-radius: 2px;
+}
+
+.card p {
+  color: #000000;
+  line-height: 1.8;
+}
+
+.card ul {
+  color: #000000;
+  padding-left: 1.2rem;
+}
+
+.card li {
+  margin: 0.8rem 0;
+}
+
+.tabs-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  background: #000000;
+  padding: 1rem 0 0 0;
+  gap: 0.5rem;
+}
+
+.tab {
+  padding: 1rem 2rem;
+  background: rgba(255,215,0,0.1);
+  border: none;
+  border-radius: 8px 8px 0 0;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255,215,0,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.tab:hover::before {
+  transform: translateX(100%);
+}
+
+.tab.active {
+  background: var(--secondary);
+  color: black;
+}
+
+.tab-content {
+  display: none;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.optimization-step {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-left: 4px solid var(--secondary);
+  background: rgba(255,215,0,0.05);
+  border-radius: 0 8px 8px 0;
+}
+
+.optimization-step h4 {
+  color: #000000;
+  margin: 0 0 0.5rem 0;
+}
+
+.optimization-step p {
+  margin: 0;
+  color: #333;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>HyTeck</h1>
+  <p>Domine a Arte da Otimização e Maximize seu Desempenho Gaming</p>
+</header>
+
+<div class="hero">
+  <div class="optimization-container">
+    <div class="card floating-element">
+      <h2>Por que otimizar seu PC?</h2>
+      <p>A otimização profissional do seu computador proporcionará:</p>
+      <ul>
+        <li>Performance extraordinária com FPS consistentemente altos</li>
+        <li>Experiência gaming fluida e sem interrupções</li>
+        <li>Eliminação de gargalos e micro travamentos</li>
+        <li>Sistema operacional ágil e responsivo</li>
+      </ul>
+    </div>
+
+    <div class="tabs-container">
+      <div class="tabs">
+        <button class="tab active" data-tab="basic">Otimização Básica</button>
+        <button class="tab" data-tab="advanced">Otimização Avançada</button>
+        <button class="tab" data-tab="gaming">Gaming</button>
+        <button class="tab" data-tab="windows">Windows</button>
+      </div>
+
+      <div class="tab-content active" data-content="basic">
+        <div class="optimization-step">
+          <h4>Limpeza do Sistema</h4>
+          <p>Remoção de arquivos temporários e otimização do registro do Windows</p>
+        </div>
+        <div class="optimization-step">
+          <h4>Ajustes de Inicialização</h4>
+          <p>Configuração dos programas que iniciam com o Windows</p>
+        </div>
+        <div class="optimization-step">
+          <h4>Desfragmentação</h4>
+          <p>Organização dos arquivos do disco rígido para melhor performance</p>
+        </div>
+      </div>
+
+      <div class="tab-content" data-content="advanced">
+        <div class="optimization-step">
+          <h4>Otimização de Memória</h4>
+          <p>Configurações avançadas de RAM e memória virtual</p>
+        </div>
+        <div class="optimization-step">
+          <h4>Tweaks de Sistema</h4>
+          <p>Ajustes profundos no registro e serviços do Windows</p>
+        </div>
+        <div class="optimization-step">
+          <h4>Overclock Seguro</h4>
+          <p>Configurações de overclock para máxima performance</p>
+        </div>
+      </div>
+
+      <div class="tab-content" data-content="gaming">
+        <div class="optimization-step">
+          <h4>Otimização de GPU</h4>
+          <p>Configurações específicas para placas de vídeo NVIDIA e AMD</p>
+        </div>
+        <div class="optimization-step">
+          <h4>Config de Jogos</h4>
+          <p>Ajustes personalizados para os principais jogos do momento</p>
+        </div>
+        <div class="optimization-step">
+          <h4>Input Lag</h4>
+          <p>Redução de latência e otimização de periféricos</p>
+        </div>
+      </div>
+
+      <div class="tab-content" data-content="windows">
+        <div class="optimization-step">
+          <h4>Services.msc</h4>
+          <p>Otimização dos serviços do Windows para gaming</p>
+        </div>
+        <div class="optimization-step">
+          <h4>Power Plan</h4>
+          <p>Configuração do plano de energia para máximo desempenho</p>
+        </div>
+        <div class="optimization-step">
+          <h4>Network</h4>
+          <p>Otimização das configurações de rede e internet</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar" data-progress="0"></div>
+    </div>
+
+    <button class="button" id="startOptimization">Iniciar Otimização Premium</button>
+  </div>
+</div>
+
+<script>
+document.getElementById('startOptimization').addEventListener('click', function() {
+    const progressBar = document.querySelector('.progress-bar');
+    let progress = 0;
+    
+    const interval = setInterval(() => {
+        progress += 1;
+        progressBar.style.width = progress + '%';
+        progressBar.setAttribute('data-progress', progress);
+        
+        if (progress >= 100) {
+            clearInterval(interval);
+            alert('Parabéns! Você está pronto para começar sua jornada de otimização!');
+        }
+    }, 50);
+});
+
+const cards = document.querySelectorAll('.card');
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px'
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+cards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(50px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(card);
+});
+
+// Add tab functionality
+const tabs = document.querySelectorAll('.tab');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active class from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+
+        // Add active class to clicked tab and corresponding content
+        tab.classList.add('active');
+        const content = document.querySelector(`.tab-content[data-content="${tab.dataset.tab}"]`);
+        content.classList.add('active');
+    });
+});
+</script>
+
+</body></html>
